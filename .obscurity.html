@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<body>
+<font size="6">Obscurity Score (Top 10)</font>
+<br><br>
+Instructions: 
+<br><br>
+1) Write the artist name in the left field and the album name in the right field of your ten favorite albums of all time (album order doesn't matter).
+<br><br>
+2) Only one album per artist. 
+<br><br>
+3) Ignore various artists albums. 
+<br><br>
+4) Ignore albums made by artists who share the name of another popular artist (Nirvana if referring to the London band, Death for the garage rock band, etc).
+<br><br>
+5) Use the most common/general name of an artist (for example, "Miles Davis" instead of "Miles Davis Quintet", "Frank Zappa" instead of "The Mothers of Invention"). 
+<br>
+    If not sure, look up the related artist with the most listeners using the following link: 
+<br>    
+    <a href="https://www.last.fm/search/albums?q=ALBUM+NAME">last.fm/search/albums?q=ALBUM+NAME</a>
+<br><br>
+6) For collaborations, use the name of the artist with the most listeners (for example, "Mono" instead of "Mono &amp; World's End Girlfriend").
+<br>
+    If not sure, look up the related artist with the most listeners using the following link:
+<br>
+    <a href="https://www.last.fm/search/artists?q=ARTIST+NAME">last.fm/search/artists?q=ARTIST+NAME</a>
+<br><br>
+7) Use the composer name when it comes to classical.
+<br><br>
+Note: You don't actually need to type the album name, so feel free to leave the album field blank.
+<br><br>
+01. <input id="a" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+02. <input id="b" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+03. <input id="c" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+04. <input id="d" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+05. <input id="e" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+06. <input id="f" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+07. <input id="g" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+08. <input id="h" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+09. <input id="i" placeholder="Artist"><input id="trash" placeholder="Album">
+<br>
+10. <input id="j" placeholder="Artist"><input id="trash" placeholder="Album">
+<br><br>
+Raw Obscurity Score: <b id="raw"></b>
+<br><br>
+Obscurity Score: <b id="nonraw"></b>
+<p>What does the score mean? The score is a rough approximation of how obscure your taste of music is compared to /mu/'s. A score of 80% would mean your taste is more obscure than 80% of /mu/'s, for example. Keep in mind the score is only representative if you use your all time favorites.</p>
+<p>To be done: scores for other sites, and the possibility to give scores based on last albums listened to or all time favorites (using 10, 25, 50, and maybe even 100 recordings).</p>
+<p>Are you interested in helping with this project? If yes, send an email to avantmathgod@loves.dicksinhisan.us (yes, it's a real email) with your comments, suggestions, or ways you could help to the site.</p>
+<p style="display:inline" id="sendscore"></p>
+<button type="button" onclick="rawf(); nonrawf(); send();">Calculate!</button>
+<br><br><br><br>
+<script>
+function send() {
+    var score = 'To improve this test, please send me your raw obscurity score using the following link: <br><a href="https://goo.gl/forms/h9oIcCIpzUGpDwS23">https://goo.gl/forms/h9oIcCIpzUGpDwS23</a><br><br>'
+    document.getElementById("sendscore").innerHTML = score;
+}
+function rawf() {
+    var sum;
+    sum = f();
+    sum = (sum*100-(sum*100)%1)/100; //two decimals
+    document.getElementById("raw").innerHTML = sum;
+}
+function nonrawf(){
+    var raw = f();
+    var maxraw = 6.63;
+    var steep = 2;
+    var median = 5.2;
+    var remainder = 1/(1+Math.exp(steep*(maxraw-median)));
+    var z = 1/(1+Math.exp(steep*(raw-median)))-(Math.exp(raw)-1)/Math.exp(maxraw)*remainder;
+    var k = ""+parseInt(z*1000)/10+"%"; //one decimal and percentage
+    document.getElementById("nonraw").innerHTML = k;
+}
+function f() {
+    var x; 
+    var text;
+    var artists = ["a","b","c","d","e","f","g","h","i","j"];
+    var prod = 1;
+    for (i=0;i<10;i++){
+        x = document.getElementById(artists[i]).value;
+        x = x.trim();
+        x = x.replace("&", "and");
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+        xhr.setRequestHeader('Content-Type', 'text/xml');
+        xhr.send();
+        xmlDocument = xhr.responseXML;
+        if ((xmlDocument.getElementsByTagName("lfm")[0].getAttribute("status") == "failed")||xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue==0){
+            prod = prod*1;
+        }
+        else{
+            text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+            prod = prod*text;
+        }
+    }
+    prod = Math.log10(prod)/10;
+    return prod;
+}
+</script>
+</body>
+</html> 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<body>
+<h2>Obscurometer</h2>
+<p>To get your obscurity score, just write down your last.fm username in the text field below and press "Submit"</p>
+<input type="text" id="username" name="username" value="">
+<input type="button" value="Submit" onclick='clean(document.getElementById("username").value)'>
+<div class="loading"></div>
+<div class="score"></div>
+<script src="obscurometer.js"></script>
+</body>
+</html>
