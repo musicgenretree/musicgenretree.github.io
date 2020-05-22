@@ -1,5 +1,0 @@
-plugins:
-  - jekyll-redirect-from
-redirect_from:
-  - /site.html
-  - /chart.html
