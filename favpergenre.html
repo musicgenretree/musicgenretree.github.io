@@ -16,20 +16,52 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Enter Album Art URL: <input type="text" id="myNewImg"> <button id="myChange">Okay</button><br><br><span id="myLink"></span></p>
+	<table>
+	  <tr>
+	    <td></td>
+	    <td>All fields are optional</td>
+	  </tr>
+	  <tr>
+	    <td>Album Art URL</td>
+	    <td><input type="text" id="myNewImg"></td>
+	  </tr>
+	  <tr>
+	    <td>Arist Name</td>
+	    <td><input type="text" id="myNewArtist"></td>
+	  </tr>
+	  <tr>
+	    <td>Record Name</td>
+	    <td><input type="text" id="myNewAlbum"></td>
+	  </tr>
+	  <tr>
+	  	<td>
+	    <td><button id="myChange">Okay</button><br><br><span id="myLink"></span></td>
+	  </tr>
+	</table>
   </div>
 </div>
-RYM Username: <input type="text" id="myUser"> <button id="myUserChange">Okay</button> <span id="confirm"></span>
-<br><br>Writing down your RYM username will open a page that will help you find your favorite recordings from each category.
-<br><br>
-Export: <button id="myExport">Export</button> 
-<br>
-Import: <textarea rows="2" id="myFile" placeholder="Paste contents of exported file here"></textarea> <button id="myImport">Submit</button>
-<br>
-<br>
-To save the chart as an image, simply right-click an area outside the album art and select "Save image as..."
+<h1>Favorite Recordings per Genre Chart</h1>
+<table>
+  <tr>
+    <td>RYM Username</td>
+    <td><input type="text" id="myUser"></td>
+    <td><button id="myUserChange">Okay</button> <span id="confirm"></span></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Export</td>
+    <td><button id="myExport">Export</button></td>
+  </tr>
+  <tr>
+    <td>Import</td>
+    <td><textarea rows="2" id="myFile" placeholder="Paste contents of exported file here"></textarea></td>
+    <td><button id="myImport">Submit</button></td>
+  </tr>
+</table>
+<p>Writing down your RYM username will open a page that will help you find your favorite recordings from each category<br>
+To save the chart as an image, simply right-click an area outside the album art and select "Save image as..."</p>
 
-<canvas id="canvas" width="3400" height="1400"></canvas>
+<canvas id="canvas" width="3700" height="1500"></canvas>
 </body>
 <script type="text/javascript" src="favpergenre.js"></script>
 </html>
