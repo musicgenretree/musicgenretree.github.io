@@ -13,6 +13,41 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 </head>
 <body onload="draw();">
+<div id="myModal2" class="modal">
+  <div class="modal-content">
+	<p>Writing down your RYM username will open a page that will help you find your favorite recordings from each category</p>
+	<table>
+	  <tr>
+	    <td>RYM Username</td>
+	    <td><input type="text" id="myUser"></td>
+	    <td><button id="myUserChange">Okay</button></span></td>
+	    <td><span id="confirm"></td>
+	  </tr>
+	  <tr>
+	    <td>Export</td>
+	    <td><button id="myExport">Export</button></td>
+	    <td></td>
+	  </tr>
+	  <tr>
+	    <td>Import</td>
+	    <td><textarea rows="2" id="myFile" placeholder="Paste contents of exported file here"></textarea></td>
+	    <td><button id="myImport">Submit</button></td>
+	    <td></td>
+	  </tr>
+	  <tr>
+	    <td>Theme</td>
+	    <td>
+	    	<select id="myTheme">
+	    		<option value="light">Light</option>
+	    		<option value="dark">Dark</option>
+	    	</select>
+	    </td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+	</table>
+  </div>
+</div>
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -41,29 +76,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </div>
 </div>
 <h1>Favorite Recordings per Genre Chart</h1>
-<table>
-  <tr>
-    <td>RYM Username</td>
-    <td><input type="text" id="myUser"></td>
-    <td><button id="myUserChange">Okay</button></span></td>
-    <td><span id="confirm"></td>
-  </tr>
-  <tr>
-    <td>Export</td>
-    <td><button id="myExport">Export</button></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Import</td>
-    <td><textarea rows="2" id="myFile" placeholder="Paste contents of exported file here"></textarea></td>
-    <td><button id="myImport">Submit</button></td>
-    <td></td>
-  </tr>
-</table>
-<p>Writing down your RYM username will open a page that will help you find your favorite recordings from each category<br>
+<p>
+To place an album simply click on the album art for each category.<br>
 Dragging an image from one category to another will swap the recordings.<br>
-To save the chart as an image, simply right-click an area outside the album art and select "Save image as..."</p>
-
+To save the chart as an image, simply right-click an area outside the album art and select "Save image as..."<br>
+To save your data, press "Show Options" and then "Export". You can later use the exported file to load your data by pasting its contents in the "Import" box. <br>
+The "Show Options" button offers some rudimentary integration with RateYourMusic to help you find your favorite albums from each category. <br>
+You can also customize the chart by checking out the options offered by the "Show Options" button. <br>
+</p>
+<button id="showModal2">More Information / Options</button>
+<br>
+<br>
 <canvas id="canvas" width="3700" height="1500"></canvas>
 </body>
 <script type="text/javascript" src="favpergenre.js"></script>
