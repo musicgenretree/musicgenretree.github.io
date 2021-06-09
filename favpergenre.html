@@ -5,11 +5,14 @@
 <title>Favorite Recordings per Genre Chart</title>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
-.modal { display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4);  }
+.modal { display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); }
 .modal-content { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 80%; }
 .close { color: #aaaaaa; float: right; font-size: 28px; font-weight: bold; }
 .close:hover,
 .close:focus { color: #000; text-decoration: none; cursor: pointer; }
+table td, table td * {
+    vertical-align: top;
+}
 </style>
 </head>
 <body onload="draw();">
@@ -18,6 +21,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <span class="close" id="closeModal2">&times;</span>
 	<p>Writing down your RYM username will open a page with your favorite recordings from a category whenever you click on such a category. </p>
 	<table>
+	<tr><td>
+	<table>
+	  <tr>
+	    <td><h3>Regular Options</h3></td>
+	  </tr>
 	  <tr>
 	    <td>RYM Username</td>
 	    <td><input type="text" id="myUser"></td>
@@ -36,22 +44,77 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	    <td></td>
 	  </tr>
 	  <tr>
-	    <td>Reset</td>
-	    <td><button id="myReset">Reset</button></td>
+	    <td>Reset Chart</td>
+	    <td><button id="myReset">Reset Chart</button></td>
 	    <td></td>
 	  </tr>
 	  <tr>
 	    <td>Theme</td>
 	    <td>
-	    	<select id="myTheme">
+	    	<select id="selectTheme">
 	    		<option value="light">Light</option>
 	    		<option value="dark">Dark</option>
 	    	</select>
 	    </td>
-	    <td></td>
-	    <td></td>
+	  </tr>
+	  <tr>
+	    <td>Chart Type</td>
+	    <td>
+	    	<select id="myChartType">
+	    		<option value="regular">Custom Mode</option>
+	    		<option value="favpergenre">Favorite Per Genre</option>
+	    	</select>
+	    </td>
 	  </tr>
 	</table>
+	</td><td>
+	<table>
+	  <tr>
+	    <td><h3>Custom Mode Options</h3></td>
+	  </tr>
+	  <tr>
+	    <td>Title</td>
+	    <td><input id="selectTitle" type="text"></td>
+	  </tr>
+	  <tr>
+	  <tr>
+	    <td>Columns</td>
+	    <td><input id="selectCols" type="number" min="1" max="20" value="15"></td>
+	  </tr>
+	  <tr>
+	    <td>Rows</td>
+	    <td><input id="selectRows" type="number" min="1" max="20" value="6"></td>
+	  </tr>
+	  <tr>
+	    <td>Art Width</td>
+	    <td><input id="selectWidth" type="number" min="0" max="1000" value="120"></td>
+	  </tr>
+	  <tr>
+	    <td>Between Space</td>
+	    <td><input id="selectBetween" type="number" min="0" max="1000" value="100"></td>
+	  </tr>
+	  <tr>
+	    <td>Left Pad</td>
+	    <td><input id="selectLeftPad" type="number" min="0" max="1000" value="100"></td>
+	  </tr>
+	  <tr>
+	    <td>Right Pad</td>
+	    <td><input id="selectRightPad" type="number" min="0" max="1000" value="100"></td>
+	  </tr>
+	  <tr>
+	    <td>Top Pad</td>
+	    <td><input id="selectTopPad" type="number" min="0" max="1000" value="100"></td>
+	  </tr>
+	  <tr>
+	    <td>Bottom Pad</td>
+	    <td><input id="selectBottomPad" type="number" min="0" max="1000" value="100"></td>
+	  </tr>
+	  <tr>
+	    <td>Reset Customization</td>
+	    <td><button id="customizationReset">Reset Customization</button></td>
+	  </tr>
+	</table>
+	</td></tr></table>
   </div>
 </div>
 <div id="myModal" class="modal">
@@ -83,17 +146,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </div>
 <h1>Favorite Recordings per Genre Chart</h1>
 <p>
+Your progress gets saved automatically. <br>
 To place an album simply click on the album art for each category. <br>
 Dragging an image from one category to another will swap the recordings. <br>
 To save the chart as an image, simply right-click an area outside the album art and select "Save image as...". <br>
-To save your data, press "Show Options" and then "Export". You can later use the exported file to load your data by pasting its contents in the "Import" box. <br>
-The "Show Options" button offers some rudimentary integration with RateYourMusic to help you find your favorite albums from each category. <br>
-You can also customize the chart by checking out the options offered by the "Show Options" button. <br>
 </p>
-<button id="showModal2">Show Options</button>
+<button id="showModal2">Show Options</button> <button id="downloadButton">Download Image</button>
 <br>
 <br>
 <canvas id="canvas" width="3700" height="1500"></canvas>
 </body>
-<script type="text/javascript" src="favpergenre.js"></script>
+<script type="text/javascript" src="favpergenre.js" charset="utf-8"></script>
 </html>
