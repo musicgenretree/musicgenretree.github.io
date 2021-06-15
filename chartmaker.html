@@ -33,15 +33,6 @@ table td, table td * {
 	    <td><button id="myUserChange">Okay</button></span></td>
 	    <td><span id="confirm"></td>
 	  </tr>
-	  <!--<tr>
-	    <td>Saved Charts</td>
-	    <td>
-	    	<select id="savedCharts">
-	    		<option value="chart_1">1</option>
-	    		<option value="chart_2">2</option>
-	    	</select>
-	    </td>
-	  </tr>-->
 	  <tr>
 	    <td>Export</td>
 	    <td><button id="myExport">Export</button></td>
@@ -68,12 +59,12 @@ table td, table td * {
 	    </td>
 	  </tr>
 	  <tr>
-	    <td>Chart Type</td>
+	    <td>Template</td>
 	    <td>
 	    	<select id="myChartType">
-	    		<option value="favpergenre">Favorite Per Genre (Advanced)</option>
-	    		<option value="favpergenre2">Favorite Per Genre (Medium)</option>
-	    		<option value="regular">Custom Mode</option>
+	    		<option value="favpergenre">Favorite Per Genre</option>
+	    		<option value="favpergenre2">Favorite Per Genre Category</option>
+	    		<option value="regular">Default</option>
 	    	</select>
 	    </td>
 	  </tr>
@@ -83,11 +74,21 @@ table td, table td * {
 	<table>
 	-->
 	  <tr>
-	    <td><h3>Custom Mode Options</h3></td>
+	    <td><h3>Customizable Options</h3></td>
 	  </tr>
 	  <tr>
 	    <td>Title</td>
 	    <td><input id="selectTitle" type="text"></td>
+	  </tr>
+	  <tr>
+	    <td>Labels</td>
+	    <td>
+	    	<select id="myLabels">
+	    		<option value="advanced">Genre</option>
+	    		<option value="medium">Genre Category</option>
+	    		<option value="none">No Labels</option>
+	    	</select>
+	    </td>
 	  </tr>
 	  <tr>
 	    <td>Text Placement</td>
@@ -168,7 +169,6 @@ table td, table td * {
 	</table>
   </div>
 </div>
-<h1><a href="index.html">Back to the menu</a></h1>
 <h1>Chart Maker</h1>
 <p>
 Your progress gets saved automatically. <br>
@@ -177,10 +177,15 @@ Dragging an image from one category to another will swap the recordings. <br>
 Click the "Show Options" button to access various templates and a customizable mode. <br>
 </p>
 <button id="showModal2">Show Options</button> <button id="downloadButton">Download Image</button>
+<br><br>
+<!--
+Current Chart 
+<select id="savedCharts">
+</select><br>
+<input type="text" id="newChartName" placeholder="new chart name here"> <button id="newChartButton">New</button> <button id="renameChartButton">Rename</button> <button id="deleteChartButton">Delete</button><br><br>
 <br>
-<!--<input type="text" id="newChartName" placeholder="new chart name here"> <button id="saveChartButton">Save Chart</button><br> -->
-<br>
-<canvas id="canvas" width="1000" height="1000"></canvas>
+-->
+<canvas id="canvas" width="3700" height="1500"></canvas>
 </body>
 <script type="text/javascript" src="chartmaker.js" charset="utf-8"></script>
 </html>
